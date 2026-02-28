@@ -1,7 +1,8 @@
 package Base;
 
-import Pages.InventoryPage;
-import Pages.LoginPage;
+import Pages.inventoryPage;
+import Pages.loginPage;
+import Utils.WindowManager;
 import com.google.common.io.Files;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -15,8 +16,8 @@ import java.io.IOException;
 
 public class BaseTests {
     private WebDriver driver;
-    protected LoginPage loginPage;
-    protected InventoryPage inventoryPage;
+    protected loginPage loginPage;
+    protected inventoryPage inventoryPage;
 
     @BeforeClass
     public void setUp() {
@@ -28,7 +29,7 @@ public class BaseTests {
     @BeforeMethod
     public void goHome() {
         driver.get("https://www.saucedemo.com/");
-        loginPage = new LoginPage(driver);
+        loginPage = new loginPage(driver);
     }
 
     @AfterClass
@@ -51,4 +52,7 @@ public class BaseTests {
         }
     }
 
+    public WindowManager getWindowManager() {
+        return new WindowManager(driver);
+    }
 }
